@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\maro\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\maro\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_Red.Templates.Todo.-232397357.00" t="ExcludeRecursive" />
+    <e p="C:\Users\maro\Documents\GitHub\Red.Templates.Todo" t="IncludeFlat">
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Red.Templates.Todo" t="IncludeRecursive">
+        <e p="Auth.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.0" t="Include">
+              <e p="Red.Templates.Todo.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Red.Templates.Todo.csproj" t="IncludeRecursive" />
+        <e p="Session.cs" t="Include" />
+        <e p="Todo.cs" t="Include" />
+        <e p="TodoContext.cs" t="Include" />
+        <e p="Todos.cs" t="Include" />
+        <e p="User.cs" t="Include" />
+      </e>
+      <e p="Red.Templates.Todo.sln" t="IncludeFlat" />
+    </e>
+  </component>
+</project>
