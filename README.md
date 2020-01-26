@@ -1,2 +1,3 @@
 # Red.Templates.Todo
- Template using RedHttp
+### REST API template
+Simple REST API template using RedHttp, EFCore, CookieSessions, BCrypt and FormValidator 
