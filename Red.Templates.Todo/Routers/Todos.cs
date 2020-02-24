@@ -2,12 +2,21 @@
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Red.Interfaces;
+using Red.Templates.Todo.Models;
 
-namespace Red.Templates.Todo
+namespace Red.Templates.Todo.Routers
 {
     public static class Todos
     {
-        public static async Task<HandlerType> List(Request req, Response res)
+        public static void Bind(IRouter router)
+        {
+            router.Get("/list", Authentication.IsLoggedIn, List);
+            router.Post("", Authentication.IsLoggedIn, Validation.NewTodo, Add);
+            router.Delete("", Authentication.IsLoggedIn, Validation.TodoId, Remove);
+        }
+        
+        private static async Task<HandlerType> List(Request req, Response res)
         {
             var session = req.GetData<Session>();
             
@@ -16,12 +25,12 @@ namespace Red.Templates.Todo
 
             return await res.SendJson(todos);
         }
-        public static async Task<HandlerType> Add(Request req, Response res)
+        private static async Task<HandlerType> Add(Request req, Response res)
         {
             var form = await req.GetFormDataAsync();
             var session = req.GetData<Session>();
 
-            var todo = new Todo
+            var todo = new Models.Todo
             {
                 UserId = session.UserId,
                 Title = form["title"],
@@ -35,7 +44,7 @@ namespace Red.Templates.Todo
 
             return await res.SendStatus(HttpStatusCode.OK);
         }
-        public static async Task<HandlerType> Remove(Request req, Response res)
+        private static async Task<HandlerType> Remove(Request req, Response res)
         {
             var form = await req.GetFormDataAsync();
             var session = req.GetData<Session>();

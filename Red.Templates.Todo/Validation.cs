@@ -5,7 +5,7 @@ using Validation;
 
 namespace Red.Templates.Todo
 {
-    public static class Valid
+    public static class Validation
     {
         public static Func<Request, Response, Task<HandlerType>> Credentials = ValidatorBuilder.New()
             .RequiresString("username")

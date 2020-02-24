@@ -2,11 +2,19 @@
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Red.CookieSessions;
+using Red.Interfaces;
+using Red.Templates.Todo.Models;
 
-namespace Red.Templates.Todo
+namespace Red.Templates.Todo.Routers
 {
-    public static class Auth
+    public static class Authentication
     {
+        public static void Bind(IRouter router)
+        {
+            router.Get("login", Validation.Credentials, Login);
+            router.Get("register", Validation.Credentials, CreateUser);
+            router.Get("logout", IsLoggedIn, Logout);
+        }
         public static async Task<HandlerType> IsLoggedIn(Request req, Response res)
         {
             if (req.GetData<Session>() == null)
@@ -15,7 +23,7 @@ namespace Red.Templates.Todo
             }
             return HandlerType.Continue;
         }
-        public static async Task<HandlerType> Login(Request req, Response res)
+        private static async Task<HandlerType> Login(Request req, Response res)
         {
             var form = await req.GetFormDataAsync();
 
@@ -33,13 +41,13 @@ namespace Red.Templates.Todo
             await res.OpenSession(new Session { UserId = user.Id });
             return await res.SendStatus(HttpStatusCode.OK);
         }
-        public static async Task<HandlerType> Logout(Request req, Response res)
+        private static async Task<HandlerType> Logout(Request req, Response res)
         {
             var session = req.GetData<Session>();
             await res.CloseSession(session);
             return await res.SendStatus(HttpStatusCode.OK);
         }
-        public static async Task<HandlerType> CreateUser(Request req, Response res)
+        private static async Task<HandlerType> CreateUser(Request req, Response res)
         {
             var form = await req.GetFormDataAsync();
             

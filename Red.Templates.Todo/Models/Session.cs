@@ -1,6 +1,6 @@
 ﻿using Red.CookieSessions;
 
-namespace Red.Templates.Todo
+namespace Red.Templates.Todo.Models
 {
     public class Session : CookieSessionBase
     {

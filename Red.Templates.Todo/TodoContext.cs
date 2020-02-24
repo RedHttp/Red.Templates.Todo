@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Red.Templates.Todo.Models;
 
 namespace Red.Templates.Todo
 {
@@ -12,18 +13,18 @@ namespace Red.Templates.Todo
         }
         
         public DbSet<User> Users { get; set; }
-        public DbSet<Todo> Todos { get; set; }
+        public DbSet<Models.Todo> Todos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Todo>()
+            modelBuilder.Entity<Models.Todo>()
                 .HasOne(todo => todo.User).WithMany()
                 .HasForeignKey(todo => todo.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
             
-            modelBuilder.Entity<Todo>().HasQueryFilter(todo => todo.UserId == _userId);
+            modelBuilder.Entity<Models.Todo>().HasQueryFilter(todo => todo.UserId == _userId);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

@@ -1,4 +1,4 @@
-﻿namespace Red.Templates.Todo
+﻿namespace Red.Templates.Todo.Models
 {
     public class User
     {

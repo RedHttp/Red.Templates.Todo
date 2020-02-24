@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Red.Templates.Todo
+namespace Red.Templates.Todo.Models
 {
     public class Todo
     {
